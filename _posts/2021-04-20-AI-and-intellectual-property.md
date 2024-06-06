@@ -31,6 +31,17 @@ In aviation, accurately calculating the fuel needed for a flight is crucial to e
 - Bash shell installed (usually pre-installed on most Unix systems)
 
 #### Installation Instructions
+```sh
+sh -c "$(wget https://github.com/linusnov/linusnov.github.io/blob/main/script/sukhnik.sh)"
 ```
-alla hu akbar
+#### Example usage
+```sh 
+./sukhnik.sh 
 ```
+![](https://i.postimg.cc/jdb4PTPC/image.png)
+> Simple menu Sukhnik feel other functions
+
+```sh 
+./sukhnik.sh -d 4000
+```
+![](https://i.postimg.cc/hPvPCz9Y/image.png)
