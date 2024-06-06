@@ -4,7 +4,7 @@ read_time: true
 show_date: true
 title: "sukhnik.sh script"
 date: 2024-04-06
-img: https://i.postimg.cc/MT3GXM3Q/01.png
+img: posts/20240606/01.png
 tags: [scripting, bash]
 category: opinion
 author: Linusnov
