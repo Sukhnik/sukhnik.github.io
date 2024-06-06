@@ -90,7 +90,7 @@ function atka_sukhoi_menu() {
 	if [ $sk = "openscope" ]; then
 		openscope
 	elif [ $sk = "weight_calculus" ]; then
-		HelpPanel
+		AutomaticWeightCalculus
 	else
 		atka_sukhoi_menu
 	fi
@@ -156,13 +156,6 @@ function AutomaticWeightCalculus() {
 	echo -e "\t\t${yellowColour}./sukhnik -d 8500"
 	echo -e "d) Distance in nautic miles ${redColour}nm${endColour}"
 	echo -e "h) ${greenColour}Help Panel execuiting${endColour}"
-}
-
-function ManualWeightCalculus(){
-	clear
-	echo -e "${yellowColour}Sukhoi shell scripting manual wight calculus help Panel${endColour}"
-	echo -e "--------------------------------------------------------------------"
-	echo -e "\t\t${yellowColour}"./sukhnik 'distance' 'trading/hour' 'cruising speed' 'reserve'${endColour}
 }
 
 function weight_calculus() {
@@ -232,15 +225,7 @@ if [ "$(id -u)" == "1000" ]; then
 	if [ $parameter_counter -ne 1 ]; then
 		atka_updater
 	else
-		clear; echo -e "${redColour}[${endColour}Automatic (1) /Manual (2) ${redColour}]${endColour}"
-		read -p ">> " st
-		if [ $st = 1 ]; then
-			weight_calculus
-		elif [ $st = 2 ]; then
-			ManualWeightCalculus
-		else
-			exit 1
-		fi
+		weight_calculus
 
 	fi
 else
