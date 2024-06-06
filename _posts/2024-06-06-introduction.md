@@ -11,7 +11,7 @@ author: Linusnov
 description: "How does Sukhnik script work?"
 ---
 
-# Fuel Calculus
+## Fuel Calculus
 
 In aviation, accurately calculating the fuel needed for a flight is crucial to ensure safety and efficiency. I have developed a Bash program that facilitates this calculation, allowing pilots and air operators to determine the necessary amount of fuel based on several essential parameters.
 
