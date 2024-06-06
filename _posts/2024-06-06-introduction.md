@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 title: "sukhnik.sh introduction"
-date: 2024-04-06
+date: 2024-06-06
 img: posts/20240606/01.png
 tags: [scripting, bash, fuel]
 category: function
