@@ -12,6 +12,8 @@ description: "How does Sukhnik script work?"
 ---
 
 This Bash program is designed to serve various functions, divided into two main categories: simple functions and applied functions. It is integrated with a custom Linux distribution called _Sukhnik_, and it performs essential tasks for the operating system as well as specific calculations related to aviation.
+![](https://i.postimg.cc/sgwZLkLf/image.png)
+<small>OpenScope running in localhost</small>
 
 ### Objective
 
@@ -23,8 +25,6 @@ The primary goal of this program is to provide a comprehensive tool that support
   - These functions are designed to support various system operations within the Sukhnik Linux distribution. They include tasks such as:
     - **Repository Management:** Changing and updating repositories to ensure the system has access to the latest software packages.
     - **Software Installation:** Installing necessary programs and dependencies to maintain the system’s functionality and performance.
-    ![](https://i.postimg.cc/sgwZLkLf/image.png)
-    <small>OpenScope running in localhost</small>
 - Applied functions
   - These functions are more specialized and related to aviation. They range from simple to complex calculations, including but not limited to:
     - **Weight and Balance Calculations:** Ensuring the aircraft is properly balanced and within safe operational limits.
