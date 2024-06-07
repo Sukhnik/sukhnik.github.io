@@ -11,7 +11,7 @@ author: Linusnov
 description: "How does Sukhnik script work?"
 ---
 
-This Bash program is designed to serve various functions, divided into two main categories: simple functions and applied functions. It is integrated with a custom Linux distribution called SUFNIC, and it performs essential tasks for the operating system as well as specific calculations related to aviation.
+This Bash program is designed to serve various functions, divided into two main categories: simple functions and applied functions. It is integrated with a custom Linux distribution called _Sukhnik_, and it performs essential tasks for the operating system as well as specific calculations related to aviation.
 
 ### Objective
 
