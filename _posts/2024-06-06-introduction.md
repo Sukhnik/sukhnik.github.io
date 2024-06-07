@@ -44,7 +44,7 @@ sh -c "$(wget https://github.com/linusnov/linusnov.github.io/blob/main/script/su
 ./sukhnik.sh 
 ```
 ![](https://i.postimg.cc/jdb4PTPC/image.png)
-> Simple menu Sukhnik feel other functions
+> Simple menu Sukhnik suplies other functions
 
 ```sh 
 ./sukhnik.sh -d 4000
