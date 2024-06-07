@@ -23,6 +23,8 @@ The primary goal of this program is to provide a comprehensive tool that support
   - These functions are designed to support various system operations within the Sukhnik Linux distribution. They include tasks such as:
     - **Repository Management:** Changing and updating repositories to ensure the system has access to the latest software packages.
     - **Software Installation:** Installing necessary programs and dependencies to maintain the system’s functionality and performance.
+    ![](https://i.postimg.cc/sgwZLkLf/image.png)
+    <small>OpenScope running in localhost</small>
 - Applied functions
   - These functions are more specialized and related to aviation. They range from simple to complex calculations, including but not limited to:
     - **Weight and Balance Calculations:** Ensuring the aircraft is properly balanced and within safe operational limits.
@@ -44,9 +46,10 @@ sh -c "$(wget https://github.com/linusnov/linusnov.github.io/blob/main/script/su
 ./sukhnik.sh 
 ```
 ![](https://i.postimg.cc/jdb4PTPC/image.png)
-> Simple menu Sukhnik suplies other functions
+> Simple menu Sukhnik
 
 ```sh 
 ./sukhnik.sh -d 4000
 ```
 ![](https://i.postimg.cc/hPvPCz9Y/image.png)
+> Fuel calculus
