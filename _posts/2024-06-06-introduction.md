@@ -11,23 +11,28 @@ author: Linusnov
 description: "How does Sukhnik script work?"
 ---
 
-## Fuel Calculus
+This Bash program is designed to serve various functions, divided into two main categories: simple functions and applied functions. It is integrated with a custom Linux distribution called SUFNIC, and it performs essential tasks for the operating system as well as specific calculations related to aviation.
 
-In aviation, accurately calculating the fuel needed for a flight is crucial to ensure safety and efficiency. I have developed a Bash program that facilitates this calculation, allowing pilots and air operators to determine the necessary amount of fuel based on several essential parameters.
+### Objective
 
-### How does this script work?
+The primary goal of this program is to provide a comprehensive tool that supports both system operations and aviation-related calculations, ensuring efficiency and precision in both areas.
 
-- Flight Distance (in nautical miles)
-- Fuel Consumption per Hour (in kg per hour)
-- Cruise Speed (in knots)
-- Fuel Reserve (as a percentage or fixed amount)
+### Function Categories 
 
-> The script has other functions, in this post I explain one of them.
+- Simple Functions 
+  - These functions are designed to support various system operations within the Sukhnik Linux distribution. They include tasks such as:
+    - **Repository Management:** Changing and updating repositories to ensure the system has access to the latest software packages.
+    - **Software Installation:** Installing necessary programs and dependencies to maintain the system’s functionality and performance.
+- Applied functions
+  - These functions are more specialized and related to aviation. They range from simple to complex calculations, including but not limited to:
+    - **Weight and Balance Calculations:** Ensuring the aircraft is properly balanced and within safe operational limits.
+    - **Fuel Calculation:** Determining the amount of fuel needed for a specific distance, considering various parameters.
+    - **Other Aviation Calculations:** Various other calculations that support safe and efficient flight operations.
 
 ### Installation
 
 #### Prerequisites
-- Unix-based operating system (Linux, macOS)
+- Linux or Mac Unix distribution. (It's recommended Sukhnik Linux)
 - Bash shell installed (usually pre-installed on most Unix systems)
 
 #### Installation Instructions
