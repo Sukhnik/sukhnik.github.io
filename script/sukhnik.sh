@@ -125,7 +125,7 @@ function atka_menu() {
 	if [ $ch = 1 ]; then
 		dependencies
 	elif [ $ch = 2 ]; then
-		atka_updater
+		git pull
 	elif [ $ch = 3 ]; then
 		cd .tor-browser
 		sleep 0.2
