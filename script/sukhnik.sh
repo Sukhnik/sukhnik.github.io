@@ -34,6 +34,22 @@ function ctrl_c() {
 	exit 0
 }
 
+function menu(){
+	clear; sukhoi_foot
+	echo -e "\t${greenColour}1${redColour})${endColour}Simple menu"
+	echo -e "\t${greenColour}2${redColour})${endColour}Weight fuel calculus\n\t"
+	read -p "[ menu@console ](փ)>> " wk
+
+	if [ $wk = 1 ]; then
+		atka_updater
+	elif [ $wk = 2 ]; then
+		weight_calculus
+	else
+		echo -e "\n\t${redColour}unvalid answer${endColour}\n\t"; sleep 2
+		menu
+	fi
+}
+
 function openscope() {
 	tput civis
 	dependencies=(openscope)
@@ -211,23 +227,17 @@ function F_22_Raptor() {
 # Script action
 
 if [ "$(id -u)" == "1000" ]; then
-	declare -i parameter_counter=0
-	while getopts ":d:h:" arg; do
+	# parameters
+	parameter_d=false
+	# conditions
+	while getopts ":d:" arg; do
 		case $arg in
-		d)
-			distance_parameter=$OPTARG
-			let parameter_counter+=1
-			;;
-		h) HelpPanel ;;
+			d) parameter_d=true; distance_parameter=$OPTARG ;;
+			h) helpPanel ;;
 		esac
 	done
+	menu
 
-	if [ $parameter_counter -ne 1 ]; then
-		atka_updater
-	else
-		weight_calculus
-
-	fi
 else
 	echo -e "\n\t${redColour}You cannot launch this script being ${yellowColour}$(whoami)${redColour} user${endColour}\n\t"
 fi
