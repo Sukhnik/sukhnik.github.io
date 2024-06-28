@@ -30,19 +30,16 @@ function sukhoi_foot() {
 
 function ctrl_c() {
 	clear
-	echo -e "\t${red} --=={Hack the world!}==-- ${end}"
+	echo -e "\t${red} --=={Fly around the world!}==-- ${end}"
 	exit 0
 }
 
 function menu(){
 	clear; sukhoi_foot
-	echo -e "\t${greenColour}1${redColour})${endColour}Simple menu"
-	echo -e "\t${greenColour}2${redColour})${endColour}Weight fuel calculus\n\t"
+	echo -e "\t${greenColour}1${redColour})${endColour}Weight fuel calculus\n\t"
 	read -p "[ menu@console ](փ)>> " wk
 
 	if [ $wk = 1 ]; then
-		atka_updater
-	elif [ $wk = 2 ]; then
 		weight_calculus
 	else
 		echo -e "\n\t${redColour}unvalid answer${endColour}\n\t"; sleep 2
@@ -50,37 +47,10 @@ function menu(){
 	fi
 }
 
-function openscope() {
-	tput civis
-	dependencies=(openscope)
-
-	echo -e "\t[!] Checking status script"
-	sleep 2
-
-	for program in "${dependencies[@]}"; do
-		echo -ne "---------->\t"
-		test -d $program
-
-		if [ "(echo $?)" == "0" ]; then
-			echo -e "${greenColour}(Running)${endColour}"
-			cd openscope
-			npm run start
-		else
-			dependencies
-			git clone https://github.com/openscope/openscope.git
-			cd openscope
-			npm install
-			npm run built
-			npm run start
-		fi
-		sleep 1
-	done
-}
-
 function dependencies() {
 	tput civis
 	clear
-	dependencies=(aircrack-ng msfconsole toilet npm)
+	dependencies=(toilet npm)
 
 	echo -e "\t${yellowColour}[!]Checking dependencies${endColour}"
 	sleep 2
@@ -99,19 +69,6 @@ function dependencies() {
 	done
 }
 
-function atka_sukhoi_menu() {
-	clear
-	sukhoi_foot
-	read -p "[ sukhoi@console ](փ)>> " sk
-	if [ $sk = "openscope" ]; then
-		openscope
-	elif [ $sk = "weight_calculus" ]; then
-		AutomaticWeightCalculus
-	else
-		atka_sukhoi_menu
-	fi
-}
-
 function atka_skip() {
 	clear
 	read -p "DO YOU WANT TO STOP THE SCRIPT? [y/n] " chh
@@ -128,40 +85,6 @@ function atka_skip() {
 	fi
 }
 
-function atka_menu() {
-	clear
-	toilet -f pagga Sukhnik
-	echo -e "\t 1) Install Strap"
-	echo -e "\t 2) Update"
-	echo -e "\t 3) Launch Tor"
-	echo -e "\t${redColour} 4) Sukhoi menu${endColour}"
-	echo -e "\t 5) exit"
-
-	read -p "(sukhnik@console)>> " ch
-	if [ $ch = 1 ]; then
-		dependencies
-	elif [ $ch = 2 ]; then
-		git pull
-	elif [ $ch = 3 ]; then
-		cd .tor-browser
-		sleep 0.2
-		./start-tor-browser.desktop
-	elif [ $ch = 4 ]; then
-		atka_sukhoi_menu
-	elif [ $ch ]; then
-		atka_skip
-	else
-		atka_skip
-	fi
-}
-
-function atka_updater() {
-	clear
-	toilet -f pagga Sukhnik
-	sudo pacman -Sy
-	sleep 2
-	atka_menu
-}
 
 # Sukhoi functions
 
@@ -182,7 +105,7 @@ function weight_calculus() {
 	echo -e "1)${greenColour}C-130J-30 Military Aircraft${endColour}"
 	echo -e "2)${greenColour}F-22 Raptor${endColour}"
 
-	read -p "[ weight_calculus@console ](փ)>> " ssk
+	read -p "$( echo -e ${redColour}"[ weight_calculus@console ](փ)>> ${endColour}") " ssk
 	if [ $ssk = 1 ]; then
 		C_130J_30
 	elif [ $ssk = 2 ]; then
