@@ -115,6 +115,12 @@ function weight_calculus() {
 	fi
 }
 
+# Oil prices curl
+
+function o_p(){
+	curl -s "https://www.airlines.org/dataset/argus-us-jet-fuel-index/" | html2text | grep "Jet Fuel Spot Prices Over One Year" -A 5
+}
+
 # Aircrafts
 
 function C_130J_30() {
@@ -129,6 +135,7 @@ function C_130J_30() {
 	z=$(echo "scale=2; $w * 2" | bc)
 	sleep 0.2
 	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
+	o_p
 	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
 }
 
@@ -144,6 +151,7 @@ function F_22_Raptor() {
 	z=$(echo "scale=2; $w * 2" | bc)
 	sleep 0.2
 	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
+	o_p
 	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
 }
 
