@@ -15,17 +15,34 @@ trap ctrl_c INT
 
 function sukhoi_foot() {
 	echo -e "${redColour}
-	::::::::::.                                                                       
-     .-:          .::                                                                     
-    -.        -:-    -:                                               .                   
-   -          :: ::  .-:                                                                  
-  -.        ..:=-::-=:.       ------.   --    --   -:  :-:   .-.   .-:   -------:   -:    
-  = .:--==-:.  .-    -:      .=-:::-:   ==    ==   ==-=-.    .=-----=-  .=:    -=  .=-    
-  =      ..::::--:..-:       .-::::==   -=::::=-   =- :--:   .=:   .=-  .=-::::==  .=-    
-  .-          .- .=:::--       .....     ......    .    ...   .     .     ......    .     
-   :-         =:::   .-                                                                   
-    .-:            .-:                                                                    
-       ::::.....:::.                                                                      ${endColour}"
+	                                                                                                                                                      
+                                                                                                                                                      
+               .:---:         :.                                                                                                                      
+            :*@@@@@@@@%=    -%-                                                                                                                       
+           +@@@@@@@@@@%+--+.                                                                                                                          
+          .@@@@@@@%+-:=#@@-           .*#*****      +*     +%      +*    -%:     -%     %-     .@@-   #*      +*#@#**:     :@.   .#=                  
+           +##*+- .=%@@@@@#           *@.  .        @-     @+      @=.. *#.      ##    =@      +%=@- :@-        =@         #%.. =@-                   
+               .=%@@@@@@@@#           .=:  %#      -@     =%      =@++=+@.      :@#***=%*      @= +@-*%         %+        .@*++:@=                    
+            :+##+-.  .+@@@:          :----=%+       #%==+#*.      @+    @*      *%    -@:     -@   +@@=     .--+@+--      +@    *@                    
+         .:=-.        .@%:           :----:.         .::.         -     .:      :.    .:      .:    :-      .------:      :.     -.                   
+                     :+-                                                                                                                              
+                                                                                                                                                      
+                                                                                                                                                      
+                                                                                                                                                      
+${endColour}"
+}
+
+function sukhnik_foot() {
+	echo -e "
+  
+                                          
+    #### #   # #   # #   # #   # #   # #   # 
+   #      # #  #  #   # #  #   # #  ## #  #  
+   #       #   ###     #   ##### # # # ###   
+   #      #    #  #   # #  #   # ##  # #  #  
+    #### #     #   # #   # #   # #   # #   # 
+
+  "
 }
 
 function ctrl_c() {
@@ -34,15 +51,20 @@ function ctrl_c() {
 	exit 0
 }
 
-function menu(){
-	clear; sukhoi_foot
+function menu() {
+	clear
+	sukhnik_foot
+	sleep 0.3
+	clear
+	sukhoi_foot
 	echo -e "\t${greenColour}1${redColour})${endColour}Weight fuel calculus\n\t"
 	read -p "[ menu@console ](փ)>> " wk
 
 	if [ $wk = 1 ]; then
 		weight_calculus
 	else
-		echo -e "\n\t${redColour}unvalid answer${endColour}\n\t"; sleep 2
+		echo -e "\n\t${redColour}unvalid answer${endColour}\n\t"
+		sleep 2
 		menu
 	fi
 }
@@ -85,7 +107,6 @@ function atka_skip() {
 	fi
 }
 
-
 # Sukhoi functions
 
 function AutomaticWeightCalculus() {
@@ -105,7 +126,7 @@ function weight_calculus() {
 	echo -e "1)${greenColour}C-130J-30 Military Aircraft${endColour}"
 	echo -e "2)${greenColour}F-22 Raptor${endColour}"
 
-	read -p "$( echo -e ${redColour}"[ weight_calculus@console ](փ)>> ${endColour}") " ssk
+	read -p "$(echo -e ${redColour}"[ weight_calculus@console ](փ)>> ${endColour}") " ssk
 	if [ $ssk = 1 ]; then
 		C_130J_30
 	elif [ $ssk = 2 ]; then
@@ -117,7 +138,7 @@ function weight_calculus() {
 
 # Oil prices curl
 
-function o_p(){
+function o_p() {
 	curl -s "https://www.airlines.org/dataset/argus-us-jet-fuel-index/" | html2text | grep "Jet Fuel Spot Prices Over One Year" -A 5
 }
 
@@ -163,8 +184,11 @@ if [ "$(id -u)" == "1000" ]; then
 	# conditions
 	while getopts ":d:" arg; do
 		case $arg in
-			d) parameter_d=true; distance_parameter=$OPTARG ;;
-			h) helpPanel ;;
+		d)
+			parameter_d=true
+			distance_parameter=$OPTARG
+			;;
+		h) helpPanel ;;
 		esac
 	done
 	menu
