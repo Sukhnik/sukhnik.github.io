@@ -57,22 +57,29 @@ function menu() {
 	sleep 0.3
 	clear
 	sukhoi_foot
-	echo -e "\t${greenColour}1${redColour})${endColour}Weight fuel calculus\n\t"
-	read -p "[ menu@console ](փ)>> " wk
+	echo -e "\t${greenColour}1${redColour})${endColour}Weight fuel calculus\n\t${greenColour}2${redColour})${endColour}Crosswind component calculation\n\t${greenColour}3${redColour})${endColour}Density altitude calculation\n\t${greenColour}4${redColour})${endColour}True airspeed calculation\n\t${greenColour}5${redColour})${endColour}Descent rate calculation\n\t${greenColour}6${redColour})${endColour}Calculate CG\n\t${greenColour}7${redColour})${endColour}Calculate ETA\n\t"
+	read -p "$(echo -e "${redColour}[ menu@console ](փ)>> ${endColour}")" wk
 
-	if [ $wk = 1 ]; then
-		weight_calculus
-	else
+	case $wk in
+	1) weight_calculus ;;
+	2) calculate_crosswind ;;
+	3) calculate_density_altitude ;;
+	4) calculate_true_airspeed ;;
+	5) calculate_descent_rate ;;
+	6) calculate_cg ;;
+	7) calculate_eta ;;
+	*)
 		echo -e "\n\t${redColour}unvalid answer${endColour}\n\t"
 		sleep 2
 		menu
-	fi
+		;;
+	esac
 }
 
 function dependencies() {
 	tput civis
 	clear
-	dependencies=(toilet npm)
+	dependencies=(toilet bc curl html2text)
 
 	echo -e "\t${yellowColour}[!]Checking dependencies${endColour}"
 	sleep 2
@@ -125,15 +132,25 @@ function weight_calculus() {
 	echo -e "----------------------"
 	echo -e "1)${greenColour}C-130J-30 Military Aircraft${endColour}"
 	echo -e "2)${greenColour}F-22 Raptor${endColour}"
+	echo -e "3)${greenColour}Boeing 737-800${endColour}"
+	echo -e "4)${greenColour}Boeing 777-200LR${endColour}"
+	echo -e "5)${greenColour}Boeing 787-9${endColour}"
+	echo -e "6)${greenColour}Airbus A320${endColour}"
+	echo -e "7)${greenColour}Airbus A321${endColour}"
+	echo -e "8)${greenColour}Airbus A350-900${endColour}"
 
 	read -p "$(echo -e ${redColour}"[ weight_calculus@console ](փ)>> ${endColour}") " ssk
-	if [ $ssk = 1 ]; then
-		C_130J_30
-	elif [ $ssk = 2 ]; then
-		F_22_Raptor
-	else
-		atka_skip
-	fi
+	case $ssk in
+	1) C_130J_30 ;;
+	2) F_22_Raptor ;;
+	3) Boeing_737_800 ;;
+	4) Boeing_777_200LR ;;
+	5) Boeing_787_9 ;;
+	6) Airbus_A320 ;;
+	7) Airbus_A321 ;;
+	8) Airbus_A350_900 ;;
+	*) atka_skip ;;
+	esac
 }
 
 # Oil prices curl
@@ -174,6 +191,168 @@ function F_22_Raptor() {
 	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
 	o_p
 	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
+}
+
+function Boeing_737_800() {
+	a=$(echo "scale=2; 2.51 * $distance_parameter" | bc)
+	t=$(echo "scale=2; $a / 872" | bc)
+	sleep 0.2
+	echo -e "Time:${yellowColour}$t${endColour}${greenColour}hours${endColour}"
+	b=$(echo "scale=2; $t * 2600 " | bc)
+	w=$(echo "scale=2; $b / 2.51" | bc)
+	sleep 0.2
+	echo -e "Weight:${yellowColour}$w${endColour}${greenColour}Kg${endColour}"
+	z=$(echo "scale=2; $w * 2" | bc)
+	sleep 0.2
+	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
+	o_p
+	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
+}
+
+function Boeing_777_200LR() {
+	a=$(echo "scale=2; 4.77 * $distance_parameter" | bc)
+	t=$(echo "scale=2; $a / 902" | bc)
+	sleep 0.2
+	echo -e "Time:${yellowColour}$t${endColour}${greenColour}hours${endColour}"
+	b=$(echo "scale=2; $t * 3200 " | bc)
+	w=$(echo "scale=2; $b / 4.77" | bc)
+	sleep 0.2
+	echo -e "Weight:${yellowColour}$w${endColour}${greenColour}Kg${endColour}"
+	z=$(echo "scale=2; $w * 2" | bc)
+	sleep 0.2
+	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
+	o_p
+	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
+}
+
+function Boeing_787_9() {
+	a=$(echo "scale=2; 2.82 * $distance_parameter" | bc)
+	t=$(echo "scale=2; $a / 561" | bc)
+	sleep 0.2
+	echo -e "Time:${yellowColour}$t${endColour}${greenColour}hours${endColour}"
+	b=$(echo "scale=2; $t * 1500 " | bc)
+	w=$(echo "scale=2; $b / 2.82" | bc)
+	sleep 0.2
+	echo -e "Weight:${yellowColour}$w${endColour}${greenColour}Kg${endColour}"
+	z=$(echo "scale=2; $w * 2" | bc)
+	sleep 0.2
+	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
+	o_p
+	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
+}
+
+function Airbus_A320() {
+	a=$(echo "scale=2; 2.47 * $distance_parameter" | bc)
+	t=$(echo "scale=2; $a / 870" | bc)
+	sleep 0.2
+	echo -e "Time:${yellowColour}$t${endColour}${greenColour}hours${endColour}"
+	b=$(echo "scale=2; $t * 2400 " | bc)
+	w=$(echo "scale=2; $b / 2.47" | bc)
+	sleep 0.2
+	echo -e "Weight:${yellowColour}$w${endColour}${greenColour}Kg${endColour}"
+	z=$(echo "scale=2; $w * 2" | bc)
+	sleep 0.2
+	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
+	o_p
+	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
+}
+
+function Airbus_A321() {
+	a=$(echo "scale=2; 2.75 * $distance_parameter" | bc)
+	t=$(echo "scale=2; $a / 870" | bc)
+	sleep 0.2
+	echo -e "Time:${yellowColour}$t${endColour}${greenColour}hours${endColour}"
+	b=$(echo "scale=2; $t * 2600 " | bc)
+	w=$(echo "scale=2; $b / 2.75" | bc)
+	sleep 0.2
+	echo -e "Weight:${yellowColour}$w${endColour}${greenColour}Kg${endColour}"
+	z=$(echo "scale=2; $w * 2" | bc)
+	sleep 0.2
+	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
+	o_p
+	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
+}
+
+function Airbus_A350_900() {
+	a=$(echo "scale=2; 5.17 * $distance_parameter" | bc)
+	t=$(echo "scale=2; $a / 936" | bc)
+	sleep 0.2
+	echo -e "Time:${yellowColour}$t${endColour}${greenColour}hours${endColour}"
+	b=$(echo "scale=2; $t * 4000 " | bc)
+	w=$(echo "scale=2; $b / 5.17" | bc)
+	sleep 0.2
+	echo -e "Weight:${yellowColour}$w${endColour}${greenColour}Kg${endColour}"
+	z=$(echo "scale=2; $w * 2" | bc)
+	sleep 0.2
+	echo -e "Total Oil Weight:${yellowColour}$z${endColour}${greenColour}Kg${endColour}"
+	o_p
+	echo -e "${yellowColour}\n\t\033[5mGood Travel!\033[0m\n\t${endColour}"
+}
+
+# Crosswind component calculation
+
+function calculate_crosswind() {
+	read -p "$(echo -e ${yellowColour}"Enter runway heading (degrees): "${endColour})" runway_heading
+	read -p "$(echo -e ${yellowColour}"Enter wind direction (degrees): "${endColour})" wind_direction
+	read -p "$(echo -e ${yellowColour}"Enter wind speed (knots): "${endColour})" wind_speed
+	wind_angle=$(echo "$wind_direction - $runway_heading" | bc)
+	crosswind=$(echo "$wind_speed * s($wind_angle * 4*a(1) / 180)" | bc -l)
+	echo -e "${greenColour}Crosswind component:${endColour} ${crosswind} knots"
+}
+
+# Density altitude calculation
+
+function calculate_density_altitude() {
+	read -p "$(echo -e ${yellowColour}"Enter pressure altitude (feet): "${endColour})" pressure_altitude
+	read -p "$(echo -e ${yellowColour}"Enter outside air temperature (Celsius): "${endColour})" oat
+	density_altitude=$(echo "$pressure_altitude + (120 * ($oat - 15))" | bc)
+	echo -e "${greenColour}Density altitude:${endColour} ${density_altitude} feet"
+}
+
+# True airspeed calculation
+
+function calculate_true_airspeed() {
+	read -p "$(echo -e ${yellowColour}"Enter indicated airspeed (knots): "${endColour})" indicated_airspeed
+	read -p "$(echo -e ${yellowColour}"Enter pressure altitude (feet): "${endColour})" pressure_altitude
+	read -p "$(echo -e ${yellowColour}"Enter outside air temperature (Celsius): "${endColour})" oat
+	true_airspeed=$(echo "$indicated_airspeed + (2 * $pressure_altitude / 1000) + (1.2 * $oat)" | bc)
+	echo -e "${greenColour}True airspeed:${endColour} ${true_airspeed} knots"
+}
+
+# Descent rate calculation
+
+function calculate_descent_rate() {
+	read -p "$(echo -e ${yellowColour}"Enter ground speed (knots): "${endColour})" ground_speed
+	read -p "$(echo -e ${yellowColour}"Enter descent angle (degrees): "${endColour})" descent_angle
+	descent_rate=$(echo "$ground_speed * (tan($descent_angle * 4*a(1) / 180)) * 101.27" | bc -l)
+	echo -e "${greenColour}Descent rate:${endColour} ${descent_rate} feet per minute"
+}
+
+# Calculate CG
+
+function calculate_cg() {
+	read -p "$(echo -e ${yellowColour}"Enter total weight (lbs): "${endColour})" total_weight
+	read -p "$(echo -e ${yellowColour}"Enter moment arm (inches): "${endColour})" moment_arm
+	cg=$(echo "$moment_arm / $total_weight" | bc -l)
+	echo -e "${greenColour}Center of Gravity (CG):${endColour} ${cg} inches"
+}
+
+# Calculate ETA
+
+function calculate_eta() {
+	read -p "$(echo -e ${yellowColour}"Enter distance to destination (nautical miles): "${endColour})" distance
+	read -p "$(echo -e ${yellowColour}"Enter ground speed (knots): "${endColour})" ground_speed
+	eta=$(echo "scale=2; $distance / $ground_speed" | bc)
+	hours=$(echo "$eta" | cut -d'.' -f1)
+	minutes=$(echo "scale=2; ($eta - $hours) * 60" | bc)
+	echo -e "${greenColour}Estimated Time of Arrival (ETA):${endColour} ${hours} hours and ${minutes} minutes"
+}
+
+# Main script execution
+
+function main() {
+	dependencies
+	menu
 }
 
 # Script action
