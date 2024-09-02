@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "sukhnik.sh introduction"
+title: "astrid.sh introduction"
 date: 2024-06-06
 img: posts/20240606/01.png
 tags: [scripting, bash, fuel]
@@ -39,7 +39,7 @@ The primary goal of this program is to provide a comprehensive tool that support
 
 #### Installation Instructions
 ```sh
-sh -c "$(wget https://github.com/linusnov/linusnov.github.io/blob/main/script/sukhnik.sh)"
+sh -c "$(wget https://github.com/linusnov/linusnov.github.io/blob/main/script/astrid.sh)"
 ```
 #### Example usage
 ```sh 
